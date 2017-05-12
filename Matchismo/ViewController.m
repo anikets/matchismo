@@ -9,7 +9,8 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *labelFlipsCount;
+@property (nonatomic) int flipCount;
 @end
 
 @implementation ViewController
@@ -25,5 +26,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setFlipCount:(int)flipCount {
+    _flipCount = flipCount;
+    _labelFlipsCount.text = [NSString stringWithFormat:@"Flips: %d", flipCount];
+}
 
+- (IBAction)touchedCardButton:(id)sender {
+    // Flip card
+    if ([[sender currentTitle] isEqualToString:@""]) {
+        [sender setBackgroundImage:[UIImage imageNamed:@"card-front"]
+                          forState:UIControlStateNormal];
+        [sender setTitle:@"A ♣️" forState:UIControlStateNormal];
+    } else {
+        [sender setBackgroundImage:[UIImage imageNamed:@"card-back"]
+                          forState:UIControlStateNormal];
+        [sender setTitle:@"" forState:UIControlStateNormal];
+    }
+    self.flipCount++;
+}
 @end

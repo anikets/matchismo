@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *cardButton;
+- (IBAction)touchedCardButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *clickCountLabel;
 
 @end
 
