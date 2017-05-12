@@ -58,8 +58,6 @@
 		E2D93C731EC5D5FA0071E8B4 /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
-				E2D93C771EC5D5FA0071E8B4 /* AppDelegate.h */,
-				E2D93C781EC5D5FA0071E8B4 /* AppDelegate.m */,
 				E2D93C7A1EC5D5FA0071E8B4 /* ViewController.h */,
 				E2D93C7B1EC5D5FA0071E8B4 /* ViewController.m */,
 				E2D93C7D1EC5D5FA0071E8B4 /* Main.storyboard */,
@@ -74,6 +72,8 @@
 		E2D93C741EC5D5FA0071E8B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E2D93C771EC5D5FA0071E8B4 /* AppDelegate.h */,
+				E2D93C781EC5D5FA0071E8B4 /* AppDelegate.m */,
 				E2D93C751EC5D5FA0071E8B4 /* main.m */,
 			);
 			name = "Supporting Files";
