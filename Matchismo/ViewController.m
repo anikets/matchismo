@@ -7,17 +7,30 @@
 //
 
 #import "ViewController.h"
+#import "PlayingCardDeck.h"
+#import "Card.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelFlipsCount;
 @property (nonatomic) int flipCount;
+@property (weak, nonatomic) NSString *currentCardContents;
 @end
 
 @implementation ViewController
 
+@synthesize currentCardContents = _currentCardContents;
+
+- (void)setCurrentCardContents:(NSString *)currentCardContents {  // Setter
+    _currentCardContents = currentCardContents;
+    [_cardButton setTitle:currentCardContents forState:UIControlStateNormal];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    PlayingCardDeck *deck = [[PlayingCardDeck alloc] init];
+    Card *card = [deck drawRandomCard];
+    self.currentCardContents = card.contents;
 }
 
 
@@ -36,7 +49,7 @@
     if ([[sender currentTitle] isEqualToString:@""]) {
         [sender setBackgroundImage:[UIImage imageNamed:@"card-front"]
                           forState:UIControlStateNormal];
-        [sender setTitle:@"A ♣️" forState:UIControlStateNormal];
+        [sender setTitle:_currentCardContents forState:UIControlStateNormal];
     } else {
         [sender setBackgroundImage:[UIImage imageNamed:@"card-back"]
                           forState:UIControlStateNormal];

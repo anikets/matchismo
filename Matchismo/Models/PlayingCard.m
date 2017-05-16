@@ -15,14 +15,16 @@
     return [rankStrings[self.rank] stringByAppendingString:self.suit];
 }
 
+@synthesize suit = _suit;
+
 - (void)setSuit:(NSString *)suit {
     if ([[PlayingCard validSuits] containsObject:suit]) {
-        self.suit = suit;
+        _suit = suit;
     }
 }
 
 - (NSString *)suit {
-    return self.suit ? self.suit : @"?";
+    return _suit ? _suit : @"?";
 }
 
 + (NSUInteger)maxRank {
