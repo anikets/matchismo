@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelFlipsCount;
 @property (nonatomic) int flipCount;
 @property (weak, nonatomic) NSString *currentCardContents;
+@property (strong, nonatomic) PlayingCardDeck *deck;
 @end
 
 @implementation ViewController
@@ -28,8 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    PlayingCardDeck *deck = [[PlayingCardDeck alloc] init];
-    Card *card = [deck drawRandomCard];
+    self.deck = [[PlayingCardDeck alloc] init];
+    Card *card = [self.deck drawRandomCard];
     self.currentCardContents = card.contents;
 }
 
@@ -49,7 +50,9 @@
     if ([[sender currentTitle] isEqualToString:@""]) {
         [sender setBackgroundImage:[UIImage imageNamed:@"card-front"]
                           forState:UIControlStateNormal];
-        [sender setTitle:_currentCardContents forState:UIControlStateNormal];
+        Card *card = [self.deck drawRandomCard];
+        self.currentCardContents = card.contents;
+        //[sender setTitle:self.currentCardContents forState:UIControlStateNormal];
     } else {
         [sender setBackgroundImage:[UIImage imageNamed:@"card-back"]
                           forState:UIControlStateNormal];
